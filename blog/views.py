@@ -2,7 +2,16 @@ from django.shortcuts import render, redirect
 from .models import Post
 from .forms import PostForm
 
-# Create your views here.
+
+def index(request):
+    return render(request, 'blog/index.html')
+
+def about(request):
+    return render(request, 'blog/about.html')
+
+def contact(request):
+    return render(request, 'blog/contact.html')
+
 def post_list(request):
     posts = Post.objects.all()
     return render(request, 'blog/post_list.html', {'posts': posts })
