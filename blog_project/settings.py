@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_ckeditor_5',
     'blog',
 ]
 
@@ -126,7 +127,153 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+    },
+}
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# CK EDITOR
+
+customColorPalette = [
+    {
+        'color': 'hsl(0, 0%, 0%)',
+        'label': 'Black'
+    },
+    {
+        'color': 'hsl(0, 0%, 30%)',
+        'label': 'Dim grey'
+    },
+    {
+        'color': 'hsl(0, 0%, 60%)',
+        'label': 'Grey'
+    },
+    {
+        'color': 'hsl(0, 0%, 90%)',
+        'label': 'Light grey'
+    },
+    {
+        'color': 'hsl(0, 0%, 100%)',
+        'label': 'White',
+        'hasBorder': True
+    },
+    {
+        'color': 'hsl(0, 75%, 60%)',
+        'label': 'Red'
+    },
+    {
+        'color': 'hsl(30, 75%, 60%)',
+        'label': 'Orange'
+    },
+    {
+        'color': 'hsl(60, 75%, 60%)',
+        'label': 'Yellow'
+    },
+    {
+        'color': 'hsl(90, 75%, 60%)',
+        'label': 'Light green'
+    },
+    {
+        'color': 'hsl(120, 75%, 60%)',
+        'label': 'Green'
+    },
+    {
+        'color': 'hsl(150, 75%, 60%)',
+        'label': 'Aquamarine'
+    },
+    {
+        'color': 'hsl(180, 75%, 60%)',
+        'label': 'Turquoise'
+    },
+    {
+        'color': 'hsl(210, 75%, 60%)',
+        'label': 'Light blue'
+    },
+    {
+        'color': 'hsl(240, 75%, 60%)',
+        'label': 'Blue'
+    },
+    {
+        'color': 'hsl(270, 75%, 60%)',
+        'label': 'Purple'
+    }
+]
+
+
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': {
+            'items': [
+                'heading', '|',
+                'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', 'code', 'removeFormat', '|',
+                'link', 'bulletedList', 'numberedList', 'todoList', 'blockQuote', 'insertTable', '|',
+                'outdent', 'indent', '|',
+                'codeBlock', 'sourceEditing', '|',
+                'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|',
+                'imageUpload', 'mediaEmbed', 'insertImage', '|',
+                'highlight', 'horizontalLine', 'pageBreak', '|',
+                'undo', 'redo', 'styles'
+            ]
+        },
+        'styles': {
+            'options': [
+                { 'name': 'Custom Class 1', 'element': 'p', 'attributes': { 'class': 'custom-class-1' } },
+                { 'name': 'Custom Class 2', 'element': 'p', 'attributes': { 'class': 'custom-class-2' } },
+            ]
+        },
+        'image': {
+            'toolbar': [
+                'imageTextAlternative', '|',
+                'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight', '|',
+                'resizeImage'
+            ],
+            'styles': [
+                'full',
+                'side',
+                'alignLeft',
+                'alignRight',
+                'alignCenter'
+            ]
+        },
+        'table': {
+            'contentToolbar': [
+                'tableColumn', 'tableRow', 'mergeTableCells', '|',
+                'tableProperties', 'tableCellProperties'
+            ],
+            'tableProperties': {
+                'borderColors': customColorPalette,
+                'backgroundColors': customColorPalette
+            },
+            'tableCellProperties': {
+                'borderColors': customColorPalette,
+                'backgroundColors': customColorPalette
+            }
+        },
+        'heading': {
+            'options': [
+                { 'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph' },
+                { 'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1' },
+                { 'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2' },
+                { 'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3' }
+            ]
+        },
+        'list': {
+            'properties': {
+                'styles': 'true',
+                'startIndex': 'true',
+                'reversed': 'true',
+            }
+        },
+        'height': 500,  # Set the height of the editor
+        'width': '100%',  # Set the width of the editor
+    }
+}
